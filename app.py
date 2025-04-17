@@ -30,11 +30,11 @@ async def b3api():
 	if not cc:
 		return {"error":"Please Provide A Valid CC"}
 	api = "https://www.bebebrands.com"
-	proxy = format_proxy(random.choice(proxies))
-	client = httpx.AsyncClient(timeout=30,proxy="http://"+proxy)
+	#proxy = format_proxy(random.choice(proxies))
+	client = httpx.AsyncClient(timeout=30)
 	start = time.time()
 	response = await b3(api,cc,client)
-	return {"response":response,"taken":f"{(time.time()-start):.2f} seconds"}
+	return {"cc":cc,"response":response,"taken":f"{(time.time()-start):.2f} seconds"}
 
 if __name__ == "__main__":
 	asyncio.run(app.run())
