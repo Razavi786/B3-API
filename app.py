@@ -36,5 +36,9 @@ async def b3api():
 	response = await b3(api,cc,client)
 	return {"cc":cc,"response":response,"taken":f"{(time.time()-start):.2f} seconds"}
 
+@app.route("/",methods=["GET","POST"])
+async def index():
+	return "Alive"
+
 if __name__ == "__main__":
 	asyncio.run(app.run())
